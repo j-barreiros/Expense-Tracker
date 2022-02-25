@@ -2,9 +2,14 @@ import React, { useState, useContext } from "react";
 
 import { GlobalContext } from "../../context/GlobalState";
 
+//Icons
+import { AiFillHome } from 'react-icons/ai';
+import {BiHomeCircle} from "react-icons/bi";
+
 const AddTransaction = () => {
     const [text, setText] = useState('');
-    const [amount, setAmount] = useState('0');
+    const [amount, setAmount] = useState('');
+    const [category, setCategory] = useState('');
     
     const {addTransaction} = useContext(GlobalContext);
 
@@ -15,9 +20,14 @@ const AddTransaction = () => {
             id: Math.floor(Math.random() * 999999), 
             text,
             amount: +amount,
+            category: category,
         }
 
         addTransaction(newTransaction);
+
+        setText('');
+        setAmount('');
+        setCategory('');
     }
 
     return (
@@ -46,6 +56,22 @@ const AddTransaction = () => {
                         onChange={(event) => setAmount(event.target.value)}
                         placeholder="Enter amount..." 
                     />
+                </div>
+
+                <div className={`form-control category-section ${amount.includes('-') ? 'visible' : ''}`}>
+                    <label htmlFor="categories">Categories <br /></label>
+                    <select
+                        className="categories"
+                        onChange={(event) => setCategory(event.target.value)}
+                        value={category}
+                    >
+                        <option value=''>-----</option>
+                        <option value='food'>Food</option>
+                        <option value='education'>Education</option>
+                        <option value='vehicle'>Vehicle</option>
+                        <option value='home'>Home</option>
+                        <option value='other'>Other</option>
+                    </select>
                 </div>
                 <button className="btn">Add transaction</button>
             </form>

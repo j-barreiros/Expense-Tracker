@@ -78,13 +78,25 @@ label {
 }
 
 input[type='text'],
-input[type='number'] {
+input[type='number'],
+.categories {
   border: 1px solid #dedede;
   border-radius: 2px;
   display: block;
   font-size: 16px;
   padding: 10px;
   width: 100%;
+}
+
+.category-section {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.visible {
+  display: block;
+  opacity: 1;
 }
 
 .btn {
@@ -109,6 +121,9 @@ input[type='number'] {
   list-style-type: none;
   padding: 0;
   margin-bottom: 40px;
+  padding: 0px 20px;
+  max-height: 200px;
+  overflow-y: scroll;
 }
 
 .list li {

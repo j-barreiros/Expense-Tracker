@@ -6,7 +6,8 @@ export interface Props {
     transaction: {
         id: number,
         text: string,
-        amount: number
+        amount: number,
+        category?: string
     }
 }
 
