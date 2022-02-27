@@ -11,14 +11,16 @@ const TransactionList = () => {
     const { transactions } = useContext(GlobalContext);
 
     return (
-        <>
-            <h3>History</h3>
+        <details open>
+            <summary>
+                <h3>History</h3>
+            </summary>
             <ul id="list" className="list">
                 {transactions.map((transaction: any) => (
                     <Transaction key={transaction.id} transaction={transaction} />
                 ))}
             </ul>
-        </>
+        </details>
     )
 }
 
