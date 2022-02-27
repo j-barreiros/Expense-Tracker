@@ -1,5 +1,5 @@
 //Style
-import './ExpensesDetail.style.css'
+import './ExpenseDetail.style.css'
 
 //Components
 import CategoryPercentageBar from "../CategoryPercentageBar/CategoryPercentageBar";
