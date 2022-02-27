@@ -4,20 +4,20 @@ import { GlobalContext } from "../../context/GlobalState";
 
 //Icons
 import { AiFillHome } from 'react-icons/ai';
-import {BiHomeCircle} from "react-icons/bi";
+import { BiHomeCircle } from "react-icons/bi";
 
 const AddTransaction = () => {
     const [text, setText] = useState('');
     const [amount, setAmount] = useState('');
     const [category, setCategory] = useState('');
-    
-    const {addTransaction} = useContext(GlobalContext);
 
-    const handleSubmit = (event:any) => {
+    const { addTransaction } = useContext(GlobalContext);
+
+    const handleSubmit = (event: any) => {
         event.preventDefault();
 
         const newTransaction = {
-            id: Math.floor(Math.random() * 999999), 
+            id: Math.floor(Math.random() * 999999),
             text,
             amount: +amount,
             category: category,
@@ -31,8 +31,10 @@ const AddTransaction = () => {
     }
 
     return (
-        <>
-            <h3>Add new transaction</h3>
+        <details open>
+            <summary>
+                <h3>Add new transaction</h3>
+            </summary>
             <form
                 onSubmit={handleSubmit}
             >
@@ -54,7 +56,7 @@ const AddTransaction = () => {
                         type="number"
                         value={amount}
                         onChange={(event) => setAmount(event.target.value)}
-                        placeholder="Enter amount..." 
+                        placeholder="Enter amount..."
                     />
                 </div>
 
@@ -75,7 +77,7 @@ const AddTransaction = () => {
                 </div>
                 <button className="btn">Add transaction</button>
             </form>
-        </>
+        </details>
     )
 }
 
