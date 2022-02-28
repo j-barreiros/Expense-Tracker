@@ -2,10 +2,6 @@ import React, { useState, useContext } from "react";
 
 import { GlobalContext } from "../../context/GlobalState";
 
-//Icons
-import { AiFillHome } from 'react-icons/ai';
-import { BiHomeCircle } from "react-icons/bi";
-
 const AddTransaction = () => {
     const [text, setText] = useState('');
     const [amount, setAmount] = useState('');

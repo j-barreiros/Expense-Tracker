@@ -1,10 +1,10 @@
 import React, {useContext} from "react";
 
-import { GlobalContext } from "../../context/GlobalState";
+import { GlobalContext, TransactionListType } from "../../context/GlobalState";
 
 const IncomeExpenses = () => {
 
-  const {transactions} = useContext(GlobalContext);
+  const {transactions}:TransactionListType = useContext(GlobalContext);
 
   const amounts: number[] = transactions.map((transaction:any) => transaction.amount);
 

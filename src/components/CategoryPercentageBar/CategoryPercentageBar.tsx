@@ -6,7 +6,14 @@ import { GlobalContext } from "../../context/GlobalState"
 //Style
 import './CategoryPercentageBar.style.css'
 
-export const CategoryPercentageBar = (props: any) => {
+
+//Type
+type CategoryPercentageBarProps = {
+    title: string;
+    category: 'food' | 'education' | 'vehicle' | 'home' | 'other'; 
+}
+
+export const CategoryPercentageBar = (props: CategoryPercentageBarProps) => {
     const { transactions } = useContext(GlobalContext);
 
     function getTotalByCategory(category: string) {

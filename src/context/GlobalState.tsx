@@ -10,8 +10,24 @@ const InitialState = {
 // Create context
 export const GlobalContext:any = createContext(InitialState)
 
+//Types
+type GlobalProviderProps = {
+    children: JSX.Element | JSX.Element[]; 
+}
+
+export type TransactionType = {
+    id:number;
+    text:string;
+    amount:number;
+    category?:string;
+}
+
+export type TransactionListType = {
+    transactions: TransactionType[];
+}
+
 // Provider Component
-export const GlobalProvider = ({ children }: any) => {
+export const GlobalProvider = (props: GlobalProviderProps) => {
     const [state, dispatch] = useReducer(AppReducer, InitialState);
 
     //Actions
@@ -22,7 +38,7 @@ export const GlobalProvider = ({ children }: any) => {
         });
     }
 
-    function addTransaction(transaction: any): void {
+    function addTransaction(transaction: TransactionType): void {
         dispatch({
             type: 'ADD_TRANSACTION',
             payload: transaction,
@@ -35,7 +51,7 @@ export const GlobalProvider = ({ children }: any) => {
             deleteTransaction,
             addTransaction,
         }}>
-            {children}
+            {props.children}
         </GlobalContext.Provider>
     );
 }

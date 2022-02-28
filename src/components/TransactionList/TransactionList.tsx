@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 
 //Context
-import { GlobalContext } from "../../context/GlobalState";
+import { GlobalContext, TransactionType, TransactionListType } from "../../context/GlobalState";
 
 //Components
 import Transaction from "../Transaction/Transaction";
 
 const TransactionList = () => {
 
-    const { transactions } = useContext(GlobalContext);
+    const { transactions }:TransactionListType = useContext(GlobalContext);
 
     return (
         <details open>
@@ -16,7 +16,7 @@ const TransactionList = () => {
                 <h3>History</h3>
             </summary>
             <ul id="list" className="list">
-                {transactions.map((transaction: any) => (
+                {transactions.map((transaction: TransactionType) => (
                     <Transaction key={transaction.id} transaction={transaction} />
                 ))}
             </ul>

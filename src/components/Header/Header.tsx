@@ -1,13 +1,12 @@
 import React from 'react';
 
-export interface Props {
-    title: string
+type HeaderProps = {
+    children: string;
 }
 
-const Header = (props: Props) => {
-    const {title} = props;
+const Header = (props: HeaderProps) => {
     return (
-        <h1>{title}</h1>
+        <h1>{props.children}</h1>
     )
 }
 

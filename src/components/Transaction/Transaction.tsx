@@ -1,17 +1,12 @@
 import React, { useContext } from 'react';
 
-import { GlobalContext } from '../../context/GlobalState';
+import { GlobalContext, TransactionType } from '../../context/GlobalState';
 
-export interface Props {
-    transaction: {
-        id: number,
-        text: string,
-        amount: number,
-        category?: string
-    }
+type TransactionProps = {
+    transaction: TransactionType;
 }
 
-const Transaction = (props: Props) => {
+const Transaction = (props:TransactionProps) => {
     const { id, text, amount } = props.transaction;
 
     const sign = amount > 0 ? '+' : '-';
@@ -23,10 +18,12 @@ const Transaction = (props: Props) => {
             className={amount > 0 ? 'plus' : 'minus'}
         >
             {text}<span>{sign}${Math.abs(amount)}</span>
-            <button 
-            className="delete-btn"
-            onClick={() => deleteTransaction(id)}
-            >x</button>
+            <button
+                className="delete-btn"
+                onClick={() => deleteTransaction(id)}
+            >
+                x
+            </button>
         </li>
     )
 }
